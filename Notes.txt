@@ -1,0 +1,24 @@
+Run tests: 
+    docker run -it b1c4540dff27cd2217716a82b27f1c72c126d829c955d934cc74f27ed42f0e1c npm run test
+
+Run container & then tests
+    docker-compose up
+    docker ps
+    docker exec -it [container id] npm run test
+
+After making changes to docker-compose, build new containers
+    docker-compose up --build
+    This can't interact with tests however via "docker attach [container id]"
+    But don't need to write out the command in terminal
+
+ssh into container
+    docker exec -it 2744d12a08b9 sh
+
+    To see running processes in container
+    /app # ps
+    PID     USER    TIME    COMMAND
+    01      root    0:00    npm run start
+    18      root    0:00    node /app/node_modules/.bin/react-scripts start
+    25      root    0:05    /usr/local/bin/node /app/node_modules/react-scripts/scripts/start.js
+    63      root    0:00    sh
+    69      root    0:00    ps
