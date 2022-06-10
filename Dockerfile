@@ -9,6 +9,8 @@ RUN npm run build
 
 #next phase is signified by the FROM
 FROM nginx
+# expose port 80 for elastic beanstalk specifically, otherwise "EXPOSE" does nothing.
+EXPOSE 80
 #copy from builder's app/build folder to nginx's html folder
 COPY --from=builder /app/build /usr/share/nginx/html
 # it auto starts
